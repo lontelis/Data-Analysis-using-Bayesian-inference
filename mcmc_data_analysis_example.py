@@ -86,7 +86,7 @@ def check_convergence(trace, name):
     for p in param_names:
         val = rhat[p].values
         ok = val < 1.01
-        print(f"  {p} R-hat = {val:.4f}  {'✅' if ok else '❌'}")
+        print(f"  {p} R-hat = {val:.4f}  {' yes ' if ok else ' no '}")
         all_ok = all_ok and ok
     return all_ok
 
