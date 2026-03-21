@@ -80,7 +80,7 @@ def run_analysis(degree):
             val = rhat[p].values
             ok = val < 1.01
             rhat_dict[p] = (val, ok)
-            print(f"  {p} R-hat = {val:.4f}  {'✅' if ok else '❌'}")
+            print(f"  {p} R-hat = {val:.4f}  {' yes' if ok else ' no'}")
             all_ok = all_ok and ok
         return rhat_dict
 
@@ -94,7 +94,7 @@ def run_analysis(degree):
         plt.suptitle(title)
         # Add R-hat text
         fig = plt.gcf()
-        text_str = "R-hat: " + ", ".join([f"{p}={v[0]:.3f}{'✅' if v[1] else '❌'}" for p, v in rhat_dict.items()])
+        text_str = "R-hat: " + ", ".join([f"{p}={v[0]:.3f}{' yes' if v[1] else ' no'}" for p, v in rhat_dict.items()])
         fig.text(0.1, 0.95, text_str, fontsize=10, bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
         plt.tight_layout()
         plt.savefig(filename)
